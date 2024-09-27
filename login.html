@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logo Maker</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <style>
+         @keyframes moveIn {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        h1 {
+            animation: moveIn 2.5s forwards;
+        }
+        body {
+            background-image: linear-gradient(135deg, #d1cfce 10%, #dfa168 100%);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: "Open Sans", sans-serif;
+            color: #333333;
+        }
+
+        .box-form {
+            margin-top: 1.7%;
+            margin-left: 7.5%;
+            width: 84%;
+            background: #FFFFFF;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex: 1 1 100%;
+            align-items: stretch;
+            justify-content: space-between;
+            box-shadow: 0 0 20px 6px #00000085;
+        }
+
+        @media (max-width: 980px) {
+            .box-form {
+                flex-flow: wrap;
+                text-align: center;
+                align-content: center;
+                align-items: center;
+            }
+        }
+
+        .box-form div {
+            height: auto;
+        }
+
+        .box-form .left {
+            color: #FFFFFF;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-image: url("https://i.pinimg.com/736x/5d/73/ea/5d73eaabb25e3805de1f8cdea7df4a42--tumblr-backgrounds-iphone-phone-wallpapers-iphone-wallaper-tumblr.jpg");
+            overflow: hidden;
+        }
+
+        .box-form .left .overlay {
+            padding: 10px;
+            width: 100%;
+            height: 100%;
+            background: #cc7b4dad;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        .box-form .left .overlay h1 {
+            font-size: 7.4vmax;
+            line-height: 1;
+            font-weight: 900;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        .box-form .left .overlay span p {
+            margin-top: 30px;
+            font-weight: 900;
+        }
+
+        .box-form .left .overlay span a {
+            background: #3b5998;
+            color: #FFFFFF;
+            margin-top: 10px;
+            padding: 14px 50px;
+            border-radius: 100px;
+            display: inline-block;
+            box-shadow: 0 3px 6px 1px #042d4657;
+        }
+
+        .box-form .left .overlay span a:last-child {
+            background: #1dcaff;
+            margin-left: 30px;
+        }
+
+        @keyframes falling {
+            0% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 2;
+            }
+        }
+
+        .box-form .left .overlay p {
+            animation: falling 3s forwards;
+        }
+
+        .box-form .right {
+            padding: 50px;
+            margin-top: -1%;
+            overflow: hidden;
+        }
+
+        @media (max-width: 980px) {
+            .box-form .right {
+                width: 100%;
+            }
+        }
+
+        .box-form .right h5 {
+            margin-top: 30%;
+            margin-bottom: 50%;
+            font-size: 9vmax;
+            line-height: 0;
+            font-family: "Open Sans", sans-serif;
+        }
+
+        .box-form .right .inputs {
+            overflow: hidden;
+        }
+
+        .box-form .right input {
+            padding: 9px;
+            font-size: 18px;
+            border-bottom: 2px solid #B0B3B9;
+            width: calc(100% - 20px);
+            margin-bottom: 10px;
+            border: 1px solid #e6e4e4;
+            border-radius: 20px;
+            transition: border-color 0.3s;
+        }
+
+        .box-form .right input:focus{
+            outline: none;
+            border-color: rgb(92, 163, 235);
+        }
+
+         .box-form .right button {
+            float: right;
+            color: #fff;
+            font-size: 16px;
+            padding: 12px 25px;
+            border-radius: 50px;
+            display: inline-block;
+            border: 0;
+            outline: 0;
+            background-image: linear-gradient(135deg, #475bca 10%, #4c55ce 100%);
+        }
+
+        .box-form .right button:hover {
+            transform: scale(1.05);
+        }
+
+        label {
+            display: block;
+            position: relative;
+            margin-left: 30px;
+        }
+
+        label::before {
+            content: ' \f00c';
+            position: absolute;
+            font-family: FontAwesome;
+            background: transparent;
+            border: 3px solid #70F570;
+            border-radius: 4px;
+            color: transparent;
+            left: -30px;
+            transition: all 0.2s linear;
+        }
+
+        label:hover::before {
+            font-family: FontAwesome;
+            content: ' \f00c';
+            color: #fff;
+            cursor: pointer;
+            background: #70F570;
+        }
+
+        .overflow {
+          position: fixed;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background: rgba(0, 0, 0, 0.7);
+          transition: opacity 500ms;
+          visibility: hidden;
+          opacity: 0;
+        }
+        .overflow:target {
+          visibility: visible;
+          opacity: 1;
+        }
+
+        .popup {
+          margin: 70px auto;
+          padding: 20px;
+          background: #fff;
+          border-radius: 5px;
+          width: 19%;
+          position: relative;
+          transition: all 5s ease-in-out;
+        }
+
+        .popup h2 {
+          margin-top: 0;
+          color: #333;
+          font-family: Tahoma, Arial, sans-serif;
+        }
+        .popup .close {
+          position: absolute;
+          top: 6px;
+          right: 16px;
+          transition: all 200ms;
+          font-size: 30px;
+          font-weight: bold;
+          text-decoration: none;
+          color: #333333;
+        }
+        .popup .close:hover {
+          color: #e91f1f;
+        }
+        .popup .content {
+          max-height: 40%;
+          overflow: auto;
+        }
+
+        @media screen and (max-width: 700px){
+          .box{
+            width: 70%;
+          }
+          .popup{
+            width: 70%;
+          }
+        }
+         .signup {
+            background-color: #ffffff;
+            padding: 10px;
+            border-radius: 30px;
+            max-width: 350px;
+            width: 92%;
+            text-align: center;
+        }
+
+        .signup h2 {
+            margin-top: 0;
+            font-size: 30px;
+
+        }
+
+        .signupinput {
+            margin-bottom: 20px;
+        }
+
+        .signupinput input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            transition: border-color 0.3s;
+        }
+
+        .signupinput input:focus {
+            outline: none;
+            border-color: rgb(92, 163, 235);
+        }
+
+        .signup button{
+            color: #fff;
+            font-size: 16px;
+            padding: 12px 25px;
+            border-radius: 50px;
+            display: inline-block;
+            border: 0;
+            outline: 0;
+            background-image: linear-gradient(135deg, #475bca 10%, #4c55ce 100%);
+            }
+
+            .signup button:hover {
+            transform: scale(1.05);
+            }
+    </style>
+</head>
+<body>
+<form action="/login" method="POST">
+    <div class="box-form">
+        <div class="left">
+            <div class="overlay">
+                <h1>Welcome <br>to <br>LOGOMORPH.</h1><br>
+                <p>Logo design is a crucial aspect of branding and marketing for businesses and organizations.<br> A well-designed logo can help establish a strong brand identity and convey a company's values.</p>
+            </div>
+        </div>
+        <div class="right">
+            <h5>Login</h5>
+            <div class="inputs">
+                <input type="text" name="username" placeholder="Username">
+                <br>
+                <input type="password" name="password" placeholder="Password">
+            </div>
+            <br>
+            <button>Login</button>
+            <br><br>
+            <p>Don't have an account? <a href="#popup1" id="showSignUp">Sign Up</a></p>
+            </div>
+            </div>
+            <div id="popup1" class="overflow">
+	        <div class="popup">
+                <a class="close" href="#">&times;</a>
+                <div class="content">
+			    <div class="signup">
+                <h2>Sign Up</h2>
+                <div class="signupinput">
+            <input type="text" id="signupUsername" placeholder="Username">
+            <br>
+            <input type="password" id="signupPassword" placeholder="Password">
+            <br>
+            <input type="password" id="confirmPassword" placeholder="Confirm Password">
+        </div>
+        <button>Sign Up</button>
+    </div>
+		</div>
+	</div>
+    </div>
+</form>
+</body>
+</html>

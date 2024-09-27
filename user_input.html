@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Input</title>
+    <style>
+        /* Add CSS for the preloader */
+        #preloader {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(1px); /* blur effect */
+            z-index: 9999;
+        }
+
+        .spinner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 15px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #3498db;
+            width: 50px;
+            height: 50px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+    <div class="container">
+        <h1>User Input</h1>
+        <form id="userForm" action="{{ url_for('user_input') }}" method="POST">
+            <textarea id="user_input" name="user_input" placeholder="Enter your requirements..."></textarea><br>
+            <input type="submit" value="Generate Logos">
+        </form>
+    </div>
+</body>
+<style>
+    body {
+    font-family: sans-serif;
+            background-image: linear-gradient(135deg, #d1cfce 10%, #dfa168 100%);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(1,0,1,0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+</style>
+<script>
+    document.getElementById('userForm').addEventListener('submit', function() {
+        document.getElementById('preloader').style.display = 'block';
+    });
+</script>
+</html>

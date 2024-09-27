@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logo Options</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
+    <style>
+        @keyframes animateBorder {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 200% 200%;
+            }
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-image: linear-gradient(135deg, #d1cfce 10%, #dfa168 100%);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 95vh;
+            flex-wrap: wrap;
+        }
+
+        .twelve {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px;
+            border: 5px solid;
+            border-image-source: linear-gradient(135deg, #2e2c2c, #aab4b9);
+            border-image-slice: 3;
+            animation: animateBorder 4s linear infinite;
+            background: linear-gradient(500deg, #ec6a86, #ddaf84,#ee6a87,#7c8da0,#ddb085);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin-top: 20px; /* Adjust spacing */
+        }
+
+        .logo-card {
+            width: 250px;
+            margin: 20px;
+            padding: 10px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .logo-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 5px;
+        }
+
+        .download-btn {
+            margin-top: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.4s ease;
+        }
+
+        .download-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<div class="twelve">
+    <h1 style="font-family: Georgia, serif; font-size: 50px;" >LOGO OPTIONS</h1>
+</div>
+
+<div class="logo-container">
+    {% for logo_index, logo_url in enumerate(logo_urls) %}
+    <div class="logo-card">
+        <img class="logo-image" src="{{ logo_url }}" alt="LOGO">
+        <div class="download-btn">
+            <form action="/logo_options" method="post">
+                <input type="hidden" name="logo_index" value="{{ logo_index }}">
+                <input type="submit" value="Download">
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>
